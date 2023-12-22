@@ -1,66 +1,42 @@
 import mock from './mock.js';
+import { gerenateCard, gerenateButton } from './template.js';
 
-document.addEventListener('DOMContentLoaded', function () {
-    const chart = Highcharts.chart('container2', {
-        chart: {
-            type: 'bar'
-        },
-        title: {
-            text: 'Fruit Consumption'
-        },
-        xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
-        },
-        yAxis: {
-            title: {
-                text: 'Fruit eaten'
-            }
-        },
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
+const exportDataCSV = (chartConfig, index) => {
+    // Iniciar CSV
+    let csvContent = 'data:text/csv;charset=utf-8,';
+
+    // Categorias
+    csvContent += " ,";
+    chartConfig.xAxis.categories.forEach((name) => {
+        csvContent += name + ",";
+    })
+    csvContent += '\r\n'
+
+    // Informações
+    chartConfig.series.forEach((rowArray) => {
+        csvContent += rowArray.name + "," + rowArray.data + '\r\n';
     });
 
-    const chart2 = Highcharts.chart('container1', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Corn vs wheat estimated production for 2020',
-            align: 'left'
-        },
-        subtitle: {
-            text:
-                'Source: <a target="_blank" ' +
-                'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>',
-            align: 'left'
-        },
-        xAxis: {
-            categories: ['USA', 'China', 'Brazil', 'EU', 'India', 'Russia'],
-            crosshair: true,
-            accessibility: {
-                description: 'Countries'
-            }
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: '1000 metric tons (MT)'
-            }
-        },
-        tooltip: {
-            valueSuffix: ' (1000 MT)'
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: mock.char1,
+    // Download
+    const link = document.createElement('a');
+    link.setAttribute('href', encodeURI(csvContent));
+    link.setAttribute('download', `${chartConfig.title.text} - ${index}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('page-container');
+    mock.forEach((chartConfig, index) => {
+        container.insertAdjacentHTML('beforeend', gerenateCard(index, chartConfig.title.text));
+
+        const button = document.createElement('div');
+        button.innerHTML = gerenateButton(index);
+        button.onclick = () => { exportDataCSV(chartConfig, index) }
+
+        document.getElementById(`container-button${index}`).appendChild(button);
+
+        Highcharts.chart(`container${index}`, chartConfig);
     });
 });
