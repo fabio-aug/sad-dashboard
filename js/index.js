@@ -1,7 +1,11 @@
 import mock from './mock.js';
-import { gerenateCard, gerenateButton } from './template.js';
+import { generateCard, generateButton } from './template.js';
 
-const exportDataCSV = (chartConfig, index) => {
+/**
+ * Método para exportar dados de um gráfico como uma planilha CSV.
+ * @param {object} chartConfig - Objeto de configuração do HighCharts.
+ */
+const exportDataCSV = (chartConfig) => {
     // Iniciar CSV
     let csvContent = 'data:text/csv;charset=utf-8,';
 
@@ -20,7 +24,7 @@ const exportDataCSV = (chartConfig, index) => {
     // Download
     const link = document.createElement('a');
     link.setAttribute('href', encodeURI(csvContent));
-    link.setAttribute('download', `${chartConfig.title.text} - ${index}.csv`);
+    link.setAttribute('download', `${chartConfig.title.text}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -29,11 +33,11 @@ const exportDataCSV = (chartConfig, index) => {
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('page-container');
     mock.forEach((chartConfig, index) => {
-        container.insertAdjacentHTML('beforeend', gerenateCard(index, chartConfig.title.text));
+        container.insertAdjacentHTML('beforeend', generateCard(index, chartConfig.subtitle.text));
 
         const button = document.createElement('div');
-        button.innerHTML = gerenateButton(index);
-        button.onclick = () => { exportDataCSV(chartConfig, index) }
+        button.innerHTML = generateButton(index);
+        button.onclick = () => { exportDataCSV(chartConfig) }
 
         document.getElementById(`container-button${index}`).appendChild(button);
 

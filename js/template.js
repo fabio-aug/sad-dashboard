@@ -1,4 +1,12 @@
-function gerenateCard(id, description) {
+/**
+ * Função para gerar um template de um card com gráfico.
+ *
+ * @param {number} id ID do gráfico.
+ * @param {string} description Descrição do gráfico.
+ * @returns {string} Template do gráfico.
+ *
+ */
+function generateCard(id, description) {
     return (
         `<div class="col">
             <div class="card shadow-sm">
@@ -14,7 +22,14 @@ function gerenateCard(id, description) {
     );
 }
 
-function gerenateButton(id) {
+/**
+ * Função para gerar um botão.
+ *
+ * @param {number} id - ID do botão.
+ * @returns {string} Template do botão.
+ *
+ */
+function generateButton(id) {
     return (
         `<button
             id="button${id}"
@@ -27,6 +42,6 @@ function gerenateButton(id) {
 }
 
 export {
-    gerenateCard,
-    gerenateButton
+    generateCard,
+    generateButton
 };
