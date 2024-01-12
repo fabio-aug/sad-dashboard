@@ -4,7 +4,10 @@ export default {
     },
     title: {
         text: 'Fluxo de Caixa',
-        align: 'center'
+        align: 'center',
+        style: {
+            display: 'none'
+        }
     },
     subtitle: {
         text: 'Valores de faturamento, custo e lucro obtidos ao decorrer de um ano.',

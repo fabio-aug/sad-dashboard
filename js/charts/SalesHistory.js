@@ -1,31 +1,31 @@
 export default [{
-    title: '1 - title',
-    description: '1 - description',
+    value: 100,
+    title: 'Rogério Gomes',
+    description: '1x Kit de Ferramentas Fox Lux',
+    date: new Date('2023-12-10T12:24:00'),
 }, {
-    title: '2 - title',
-    description: '2 - description',
+    value: 150,
+    title: 'Maria Lucia',
+    description: '3x Argamassa AC-3 20kg Precon',
+    date: new Date('2023-12-12T12:45:00'),
 }, {
-    title: '3 - title',
-    description: '3 - description',
+    value: 78,
+    title: 'Ana Silva',
+    description: '5x Adesivo Pvc 175g Tigre',
+    date: new Date('2023-12-15T13:14:00'),
 }, {
-    title: '4 - title',
-    description: '4 - description',
+    value: 96,
+    title: 'Carlos Oliveira',
+    description: '2x Luminária De Emergência, Led, Bivolt Fox Lux',
+    date: new Date('2023-12-16T17:30:00'),
 }, {
-    title: '5 - title',
-    description: '5 - description',
+    value: 14,
+    title: 'Gustavo Santos',
+    description: '1x Campainha bivolt digital - 100m Fox Lux',
+    date: new Date('2023-12-17T12:20:00'),
 }, {
-    title: '6 - title',
-    description: '6 - description',
-}, {
-    title: '7 - title',
-    description: '7 - description',
-}, {
-    title: '8 - title',
-    description: '8 - description',
-}, {
-    title: '9 - title',
-    description: '9 - description',
-}, {
-    title: '10 - title',
-    description: '10 - description',
+    value: 17.99,
+    title: 'Maria Silva',
+    description: '1x TE Soldável 50mm Krona',
+    date: new Date('2023-12-17T11:00:00'),
 }];

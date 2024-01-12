@@ -6,5 +6,14 @@ html {
 
 .max-container {
     overflow-y: auto;
-    max-height: 500px;
+    overflow-x: hidden;
+    max-height: 550px;
+}
+
+.title-card {
+    text-align: center;
+    font-size: 1.2em;
+    color: rgb(51, 51, 51);
+    font-weight: bold;
+    fill: rgb(51, 51, 51);
 }

@@ -7,7 +7,10 @@ export default {
     },
     title: {
         align: 'center',
-        text: 'Porcentagem de Vendas por Marcas/Produtos'
+        text: 'Porcentagem de Vendas por Marcas/Produtos',
+        style: {
+            display: 'none'
+        }
     },
     subtitle: {
         text: 'Porcentagem de vendas por marcas e seus respectivos produtos.',

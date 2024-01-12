@@ -1,17 +1,34 @@
-import mock from './mock.js';
 import template from './template.js';
+import CashFlow from './charts/CashFlow.js';
+import SalesHistory from './charts/SalesHistory.js';
+import ProductsBrands from './charts/ProductsBrands.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('page-container');
-    mock.charts.forEach((chartConfig, index) => {
-        container.insertAdjacentHTML('beforeend', template.generateCard(index, chartConfig.subtitle.text));
+    [CashFlow, ProductsBrands].forEach((chartConfig, index) => {
+        container.insertAdjacentHTML(
+            'beforeend',
+            template.generateCard(
+                index,
+                chartConfig.title.text,
+                chartConfig.subtitle.text
+            )
+        );
         Highcharts.chart(`container${index}`, chartConfig);
     });
 
-    container.insertAdjacentHTML('beforeend', template.generateAccordion());
+    container.insertAdjacentHTML('beforeend', template.generateAccordion('Histótico de Vendas'));
     const containerSales = document.getElementById('accordion-container');
-    mock.listSales.forEach((sale, index) => {
-        console.log(sale);
-        containerSales.insertAdjacentHTML('beforeend', template.generateSectionAccordion(index, sale.title, sale.description));
+    SalesHistory.forEach((sale, index) => {
+        const title = `${sale.date.toLocaleDateString("pt-BR")} - ${sale.title}`;
+        containerSales.insertAdjacentHTML(
+            'beforeend',
+            template.generateSectionAccordion(
+                index,
+                title,
+                sale.value,
+                sale.description,
+            )
+        );
     });
 });
