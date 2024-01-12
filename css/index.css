@@ -3,3 +3,8 @@
 html {
     background-color: aquamarine;
 }
+
+.max-container {
+    overflow-y: auto;
+    max-height: 500px;
+}
