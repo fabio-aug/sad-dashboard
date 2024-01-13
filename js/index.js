@@ -1,7 +1,7 @@
-import template from './template.js';
 import CashFlow from './charts/CashFlow.js';
-import SalesHistory from './charts/SalesHistory.js';
 import ProductsBrands from './charts/ProductsBrands.js';
+import SalesHistory from './charts/SalesHistory.js';
+import template from './template.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('page-container');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         Highcharts.chart(`container${index}`, chartConfig);
     });
 
-    container.insertAdjacentHTML('beforeend', template.generateAccordion('Histótico de Vendas'));
+    container.insertAdjacentHTML('beforeend', template.generateAccordion('Histórico de Vendas'));
     const containerSales = document.getElementById('accordion-container');
     SalesHistory.forEach((sale, index) => {
         const title = `${sale.date.toLocaleDateString("pt-BR")} - ${sale.title}`;
